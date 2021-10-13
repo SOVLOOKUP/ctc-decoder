@@ -1,0 +1,23 @@
+[package]
+name = "fast_ctc_decode"
+version = "0.3.0"
+authors = ["Vlado Boza <bozavlado@gmail.com>", "Chris Seymour <chris.seymour@nanoporetech.com>"]
+edition = "2018"
+
+[lib]
+name = "fast_ctc_decode"
+crate-type = ["cdylib"]
+
+[dependencies]
+ndarray-stats = "0.5.0"
+ndarray = { version = "0.15.3", features = ["blas"] }
+wasm-bindgen = "0.2.78"
+
+[features]
+default = ["fastexp"]
+fastexp = []
+
+[profile.release]
+lto=true
+codegen-units=1
+panic="abort"
